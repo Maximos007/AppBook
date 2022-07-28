@@ -18,8 +18,12 @@ elementBtn.addEventListener('click', () => {
   if (nameAuthors == '') {
     alert('Não encontramos nenhum livro com esse autor');
   } else {
-    result.innerHTML = `<p>Livros: ${booksAuthors.map(books => books.map(book => book.title))}</p>`
-    console.log(booksAuthors);
+    result.innerHTML = `<h1>${nameAuthors}</h1>`;
+    booksAuthors.forEach(books => {
+      books.forEach(book => {
+        result.innerHTML += `<p>${book.title}</p>`;
+      });
+    });
   }
 
 });
