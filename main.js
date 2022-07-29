@@ -4,12 +4,12 @@ import booksByCategory from './db.json' assert {type: 'json'}
 const elementBtn = document.querySelector('#btn');
 
 // capturando o lick no botão
-elementBtn.addEventListener('click', () => {
-
+elementBtn.addEventListener('click', (event) => {
+  event.preventDefault()
   // dados de entrada: Input
-  const nameAuthors = document.querySelector('#inputName').value;
+  const nameAuthors = document.querySelector('#name').value;
   // saida dos dados: Output
-  const result = document.querySelector('#res');
+  const result = document.querySelector('.list');
 
   const booksAuthors = booksByCategory.map(category => category.books)
     .map(books => books.filter(book => book.author === nameAuthors))
