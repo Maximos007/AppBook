@@ -9,13 +9,24 @@
 </head>
 
 <body>
-  <h1>Books</h1>
-  <div>
-    <label for="inputName">Autor:</label>
-    <input type="text" name="inputName" id="inputName" placeholder="Autor">
-    <button type="button" id="btn">Pesquisar</button>
-    <div id="res"></div>
-  </div>
+  <header>
+    <h1>Books App</h1>
+  </header>
+
+  <main>
+    <div class="search-form">
+      <form>
+        <label for="name">Autor:</label>
+        <input type="text" name="name" id="name" placeholder="Autor">
+        <button type="submit" id="btn">Pesquisar</button>
+      </form>
+    </div>
+    <div class="results">
+      <ul class="list">
+      </ul>
+    </div>
+  </main>
+  
   <script src="main.js" type="module"></script>
 </body>
 

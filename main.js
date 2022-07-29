@@ -4,12 +4,12 @@ import booksByCategory from './db.json' assert {type: 'json'}
 const elementBtn = document.querySelector('#btn');
 
 // capturando o lick no botão
-elementBtn.addEventListener('click', () => {
-
+elementBtn.addEventListener('click', (event) => {
+  event.preventDefault()
   // dados de entrada: Input
-  const nameAuthors = document.querySelector('#inputName').value;
+  const nameAuthors = document.querySelector('#name').value;
   // saida dos dados: Output
-  const result = document.querySelector('#res');
+  const result = document.querySelector('.list');
 
   const booksAuthors = booksByCategory.map(category => category.books)
     .map(books => books.filter(book => book.author === nameAuthors))
@@ -18,10 +18,10 @@ elementBtn.addEventListener('click', () => {
   if (nameAuthors == '') {
     alert('Não encontramos nenhum livro com esse autor');
   } else {
-    result.innerHTML = `<h1>${nameAuthors}</h1>`;
+    result.innerHTML = `<h2>${nameAuthors}</h2>`;
     booksAuthors.forEach(books => {
       books.forEach(book => {
-        result.innerHTML += `<p>${book.title}</p>`;
+        result.innerHTML += `<li>${book.title}</li>`;
       });
     });
   }
