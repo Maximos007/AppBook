@@ -18,7 +18,7 @@ elementBtn.addEventListener('click', (event) => {
   if (nameAuthors == '') {
     alert('Não encontramos nenhum livro com esse autor');
   } else {
-    result.innerHTML = `<h1>${nameAuthors}</h1>`;
+    result.innerHTML = `<h2>${nameAuthors}</h2>`;
     booksAuthors.forEach(books => {
       books.forEach(book => {
         result.innerHTML += `<li>${book.title}</li>`;
