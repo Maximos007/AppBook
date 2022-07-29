@@ -21,7 +21,7 @@ elementBtn.addEventListener('click', (event) => {
     result.innerHTML = `<h1>${nameAuthors}</h1>`;
     booksAuthors.forEach(books => {
       books.forEach(book => {
-        result.innerHTML += `<p>${book.title}</p>`;
+        result.innerHTML += `<li>${book.title}</li>`;
       });
     });
   }
