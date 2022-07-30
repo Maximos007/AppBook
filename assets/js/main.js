@@ -1,4 +1,4 @@
-import booksByCategory from './db.json' assert {type: 'json'}
+import booksByCategory from '../../db.json' assert {type: 'json'}
 
 // botão
 const elementBtn = document.querySelector('#btn');
@@ -21,7 +21,10 @@ elementBtn.addEventListener('click', (event) => {
     result.innerHTML = `<h2>${nameAuthors}</h2>`;
     booksAuthors.forEach(books => {
       books.forEach(book => {
-        result.innerHTML += `<li>${book.title}</li>`;
+        result.innerHTML += `<li>
+        <img src="assets/img/book_black_24dp.svg" alt="">
+        ${book.title}
+        </li>`;
       });
     });
   }
