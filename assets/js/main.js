@@ -1,57 +1,32 @@
 import booksByCategory from '../../db.json' assert {type: 'json'}
 
-// botão
 const elementBtn = document.querySelector('#btn');
 
-// capturando o lick no botão
 elementBtn.addEventListener('click', (event) => {
-  event.preventDefault()
-  // dados de entrada: Input
+  event.preventDefault();
   const nameAuthors = document.querySelector('#name').value;
-  // saida dos dados: Output
   const result = document.querySelector('.list');
+  const booksAuthors = booksByCategory
+    .map(category => category.books)
+    .map(books => books
+      .filter(book => book.author === nameAuthors))
 
-  const booksAuthors = booksByCategory.map(category => category.books)
-    .map(books => books.filter(book => book.author === nameAuthors))
+  const consultBook = booksAuthors.filter(books => books.length > 0);
 
-  // Validação dos dados 
-  if (nameAuthors == '') {
-    alert('Não encontramos nenhum livro com esse autor');
-  } else {
-    result.innerHTML = `<h2>${nameAuthors}</h2>`;
-    booksAuthors.forEach(books => {
+  if (consultBook.length > 0) {
+    result.innerHTML = '';
+    consultBook.forEach(books => {
       books.forEach(book => {
-        result.innerHTML += `<li>
+        const li = document.createElement('li');
+        li.innerHTML = `
         <img src="assets/img/book_black_24dp.svg" alt="">
-        ${book.title}
-        </li>`;
-      });
-    });
+        ${book.title} - ${book.author}
+        `;
+        result.appendChild(li);
+      })
+    })
+  } else {
+    result.innerHTML = 'Não há livros deste autor';
   }
 
-});
-
-// // Contar autores 
-// function countAuthors() {
-//   const authors = booksByCategory.map(category => category.books)
-//     .map(books => [...new Set (books.map(book => book.author))])
-//     .reduce((total, authors) => total + authors.length, 0);
-
-//   console.log(`Total de autores ${authors}`);
-// }
-
-// function searchBooks(author) {
-//   const booksAuthors = booksByCategory.map(category => category.books)
-//     .map(books => books.filter(book => book.author === author))
-
-//     console.log(booksAuthors[0][0].title)
-// }
-
-// function main() {
-//   return {
-//     countAuthors: countAuthors(),
-//     searchBooks: searchBooks('T. Harv Eker')
-//   }
-// }
-
-// main()
+})
