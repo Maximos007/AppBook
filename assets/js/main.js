@@ -13,7 +13,9 @@ elementBtn.addEventListener('click', (event) => {
   const booksAuthors = booksByCategory
     .map(category => category.books)
     .map(books => books
-      .filter(book => book.author.startsWith(nameAuthors)))
+      .filter(book => book.author
+        .toLowerCase()
+        .startsWith(nameAuthors.toLowerCase())))
       
   const consultBook = booksAuthors.filter(books => books.length > 0);
 
