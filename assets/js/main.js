@@ -5,12 +5,16 @@ const elementBtn = document.querySelector('#btn');
 elementBtn.addEventListener('click', (event) => {
   event.preventDefault();
   const nameAuthors = document.querySelector('#name').value;
+  if (nameAuthors === '') {
+    alert('Digite o nome do autor');
+    return;
+  }
   const result = document.querySelector('.list');
   const booksAuthors = booksByCategory
     .map(category => category.books)
     .map(books => books
-      .filter(book => book.author === nameAuthors))
-
+      .filter(book => book.author.startsWith(nameAuthors)))
+      
   const consultBook = booksAuthors.filter(books => books.length > 0);
 
   if (consultBook.length > 0) {
