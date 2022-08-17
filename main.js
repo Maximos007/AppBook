@@ -1,4 +1,4 @@
-import booksByCategory from '../../db.json' assert {type: 'json'}
+import booksByCategory from './db.json' assert {type: 'json'}
 
 const elementBtn = document.querySelector('#btn');
 
